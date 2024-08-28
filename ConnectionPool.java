@@ -12,4 +12,9 @@ public class ConnectionPool {
             availableConnections.add(new DatabaseConnection());
         }
     }
+    public synchronized void releaseConnection(DatabaseConnection connection) {
+        availableConnections.add(connection);
+        usedConnection.remove(connection);
+        System.out.println("Connection released: " + connection);
+    }
 }
